@@ -1,0 +1,6 @@
+export const para= "text-white lg:text-lg text"
+export const h1= "text-white lg:text-xl text-lg"
+export const h2= "text-white lg:text-2xl text-xl"
+export const h3= "text-white lg:text-4xl text-2xl"
+export const h4= "text-white lg:text-6xl text-3xl"
+export const  primaryButton="px-4 py-2 mx-4 bg-blue-600 border-blue-900 border hover:bg-blue-500 hover:border-blue-700 transition:ease rounded-lg my-4"

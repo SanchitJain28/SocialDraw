@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { h2, primaryButton } from '../Themeclasses'
 import axios from 'axios'
 const Axios = axios.create({
@@ -6,7 +6,7 @@ const Axios = axios.create({
   });
 
 export default function FileUpload() {
-    const [file, setFiles] = useState<string|null>(null)
+    const [file, setFiles] = useState<File|null>(null)
     const fileUpload = async () => {
         if (!file) {
             console.log("No file selected");
@@ -31,7 +31,9 @@ export default function FileUpload() {
                 e.preventDefault();
             }} >
                 <input type="file" onChange={(e)=>{
-                    setFiles(e.target.files[0])
+                    if (e.target.files && e.target.files[0]) {
+                        setFiles(e.target.files[0]);
+                    }
                 }} name="avatar" className='text-white bg-black rounded p-4 mx-4 rounded-lg my-4' />
             </form>
             <button className={primaryButton + "my-4"} onClick={()=>{

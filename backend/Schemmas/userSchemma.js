@@ -24,7 +24,6 @@ const UserSchemma = new Schema({
     },
     refreshToken: {
         type: String,
-       
     },
 }, { timestamps: true });
 
@@ -37,7 +36,7 @@ UserSchemma.methods.isPasswordCorrect = async function (password) {
 }
 
 UserSchemma.methods.generateAccessToken = async function () {
-    return jsonwebtoken.sign(
+    const token= jsonwebtoken.sign(
         {
             id: this._id,
             name: this.name,
@@ -46,6 +45,7 @@ UserSchemma.methods.generateAccessToken = async function () {
         "SanchitkaKhufiyaSecret",
         {expiresIn:"1d"}
     )
+    return token
 }
 UserSchemma.methods.generateRefreshToken = async function () {
     return jsonwebtoken.sign(

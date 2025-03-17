@@ -28,25 +28,9 @@ export default function Login() {
   const [loading, setLoading] = useState<boolean>(false)
   const Axios = axios.create({
     baseURL: 'http://localhost:3000',
-    withCredentials: false
+    withCredentials: true
   });
-  const setAccessToken = (token:string) => {
-    Cookies.set("accessToken", token, { 
-      expires: 7, // Cookie expiry in days
-      secure: true, // Only send over HTTPS
-      sameSite: "Strict", // Prevent CSRF attacks
-      path: "/", // Available throughout the app
-    });
-  };
-  const setRefreshToken = (token:string) => {
-    Cookies.set("refreshToken", token, { 
-      expires: 7, // Cookie expiry in days
-      secure: true, // Only send over HTTPS
-      sameSite: "Strict", // Prevent CSRF attacks
-      path: "/", // Available throughout the app
-    });
-  };
-
+  
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(SignInSchemma)
   });
@@ -59,9 +43,7 @@ export default function Login() {
         description: "Login successfully",
         className: ""
       })
-      // router("/")
-      setAccessToken(response.data.accessToken)
-      setRefreshToken(response.data.refreshToken)
+      router("/")
       console.log(response)
       console.log(data)
     } catch (error) {

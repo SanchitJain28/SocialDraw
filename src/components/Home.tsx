@@ -1,7 +1,8 @@
-import axios from 'axios';
-import { h2, h3, primaryButton } from '../Themeclasses'
+import { h2, SecondaryButton } from '../Themeclasses'
 import { NavLink } from "react-router";
 import { useEffect, useState } from 'react';
+import Info from './Info';
+import { Axios } from '../ApiFormat';
 
 export interface User {
   _id: string
@@ -13,10 +14,7 @@ export interface User {
   createdAt: Date
 }
 export default function LandingPage() {
-  const Axios = axios.create({
-    baseURL: 'http://localhost:3000',
-    withCredentials: true
-  });
+  
   const [user, setUser] = useState<null | User>(null)
   const [loading, setLoading] = useState<boolean>(true)
 
@@ -34,6 +32,7 @@ export default function LandingPage() {
     setLoading(true)
     try {
       const response = await Axios.get("/api/getuser")
+      console.log(response.data)
       setUser(response.data.data)
     } catch (error) {
       console.log(error)
@@ -58,15 +57,15 @@ export default function LandingPage() {
     </div>
   }
   return (
-    <div className="flex flex-col justify-center">
-      <p className={h2 + " mx-4 my-4"}>Welcome to Social Draw, draw with your friends</p>
-      <p className={h3 + " mx-4 my-4"}>Welcome {user ? user.name : "Please log in "}</p>
-      <div className="flex">
-        <NavLink to="/uploadFile" className={primaryButton} >Go to file upload</NavLink>
-        <NavLink to="/login" className={primaryButton} >Go to login</NavLink>
-        <NavLink to="/signup" className={primaryButton} >Go to signup</NavLink>
-      </div>
+    <div className="flex flex-col justify-center p-8">
+      <p className={h2 + " my-4"}>Welcome to Social Draw, draw with your friends</p>
+      {/* <p className={h3 + " my-4"}>Welcome {user ? user.name : "Please log in "}</p> */}
+      <Info/>
 
+      <div className="flex py-4">
+        <NavLink to="/login" className={SecondaryButton+"mr-4"} >Go to login</NavLink>
+        <NavLink to="/signup" className={SecondaryButton+"mx-4"} >Go to signup</NavLink>
+      </div>
     </div>
   )
 }

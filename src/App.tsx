@@ -4,6 +4,7 @@ import FileUpload from "./components/FileUpload";
 import Login from "./components/login";
 import SignUp from "./components/signup";
 import { Toaster } from "./components/ui/sonner"
+import Draw from "./components/Draw";
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
           <div>
              <Toaster />
             <SignUp/>
+          </div>
+        } />
+      </Routes>
+      <Routes>
+        <Route path="/draw" element={
+          <div>
+             <Toaster />
+            <Draw/>
           </div>
         } />
       </Routes>

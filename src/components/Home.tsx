@@ -58,6 +58,8 @@ export default function LandingPage() {
   }
   return (
     <div className="flex flex-col justify-center p-8">
+            <p className={h2 + " my-4"}>hi {user?.name}</p>
+
       <p className={h2 + " my-4"}>Welcome to Social Draw, draw with your friends</p>
       {/* <p className={h3 + " my-4"}>Welcome {user ? user.name : "Please log in "}</p> */}
       <Info/>

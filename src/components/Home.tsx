@@ -14,7 +14,7 @@ export interface User {
   createdAt: Date
 }
 export default function LandingPage() {
-  
+
   const [user, setUser] = useState<null | User>(null)
   const [loading, setLoading] = useState<boolean>(true)
 
@@ -58,15 +58,25 @@ export default function LandingPage() {
   }
   return (
     <div className="flex flex-col justify-center p-8">
-            <p className={h2 + " my-4"}>hi {user?.name}</p>
+      <div className="flex flex-row justify-between">
+        <p className={h2 + " my-4"}>{user ? "hi " + user?.name : "Please log in"} </p>
+        {user?.profilePic?<img src={user?.profilePic} className='w-24 rounded-lg' />:""}
+      </div>
 
       <p className={h2 + " my-4"}>Welcome to Social Draw, draw with your friends</p>
       {/* <p className={h3 + " my-4"}>Welcome {user ? user.name : "Please log in "}</p> */}
-      <Info/>
+      <Info />
 
       <div className="flex py-4">
-        <NavLink to="/login" className={SecondaryButton+"mr-4"} >Go to login</NavLink>
-        <NavLink to="/signup" className={SecondaryButton+"mx-4"} >Go to signup</NavLink>
+        {user ?
+          <div className='my-4'>
+            <NavLink to="/dashboard" className={SecondaryButton + "mr-4"} >Go to dashboard</NavLink>
+          </div> :
+          <div className='my-4'>
+            <NavLink to="/login" className={SecondaryButton + "mr-4"} >Go to login</NavLink>
+            <NavLink to="/signup" className={SecondaryButton + "mx-4"} >Go to signup</NavLink>
+          </div>
+        }
       </div>
     </div>
   )

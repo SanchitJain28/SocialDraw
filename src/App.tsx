@@ -5,6 +5,7 @@ import Login from "./components/login";
 import SignUp from "./components/signup";
 import { Toaster } from "./components/ui/sonner"
 import Draw from "./components/Draw";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -38,6 +39,14 @@ function App() {
           <div>
              <Toaster />
             <Draw/>
+          </div>
+        } />
+      </Routes>
+      <Routes>
+        <Route path="/dashboard" element={
+          <div>
+             <Toaster />
+            <Dashboard/>
           </div>
         } />
       </Routes>

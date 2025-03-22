@@ -6,6 +6,8 @@ import SignUp from "./components/signup";
 import { Toaster } from "./components/ui/sonner"
 import Draw from "./components/Draw";
 import Dashboard from "./components/Dashboard";
+import SharedDraw from "./components/SharedDraw";
+import MakeRoom from "./components/makeRoom";
 
 function App() {
   return (
@@ -47,6 +49,22 @@ function App() {
           <div>
              <Toaster />
             <Dashboard/>
+          </div>
+        } />
+      </Routes>
+      <Routes>
+        <Route path="/draw/shared" element={
+          <div>
+             <Toaster />
+            <SharedDraw/>
+          </div>
+        } />
+      </Routes>
+      <Routes>
+        <Route path="/make-a-room" element={
+          <div>
+             <Toaster />
+            <MakeRoom/>
           </div>
         } />
       </Routes>

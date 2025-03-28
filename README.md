@@ -52,3 +52,4 @@ export default tseslint.config({
   },
 })
 ```
+this is good app please use this man
